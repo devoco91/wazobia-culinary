@@ -1,0 +1,271 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home | Wazobia Culinary School | Wazobia Culinary Institute</title>
+    <link href="{% static './style.css' %}" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static './images/favicon.ico.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+    .form-label{
+      font-size:20px !important;
+      font-weight:bold;
+    }
+    .form-control{
+      height: 40px;
+    }
+
+    .registers{
+      color:red !important;
+      margin-bottom: 30px;
+    
+  </style>
+  </head>
+  <body>
+
+
+
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}" mt-5>
+          <img src="{% static './images/logo2.png' %}" alt="Wazobia Culinary School" class="nav_img mt-3">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Wazobia Culinary School</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+               
+            
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Body of Form starts -->
+  	
+<!-- Registration 8 - Bootstrap Brain Component -->
+<section class="  ">
+    <div class="container reg">
+      <div class="row justify-content-center">
+        <div class="col-12 col-xxl-11">
+          <div class="card border-light-subtle shadow-sm">
+            <div class="row g-0">
+              <div class="col-12 col-md-6">
+                <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="{% static './images/cmk2.jpg' %}" alt="Welcome back you've been missed!">
+              </div>
+              <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                <div class="col-12 col-lg-11 col-xl-10">
+                  <div class="card-body p-3 p-md-4 p-xl-5">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="mb-5">
+                          <div class="text-center mb-4">
+                            <a href="#!">
+                                <img src="{% static './images/logo2.png' %}" alt="" width="100" height="100">
+                            </a>
+                          </div>
+                        
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="form-container">
+                      <h2 class="text-center registers">Registration Form</h2>
+                      <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                          <div class="mb-3">
+                              <label for="name" class="form-label">Name *</label>
+                              <input type="text" class="form-control" id="name" name="name" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Email *</label>
+                              <input type="email" class="form-control" id="email" name="email" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="address" class="form-label">Address *</label>
+                              <input type="text" class="form-control" id="address" name="address" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="phone" class="form-label">Phone Number *</label>
+                              <input type="tel" class="form-control" id="phone" name="phone" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="course" class="form-label">Course *</label>
+                              <select class="form-select" id="course" name="course" required>
+                                  <option selected disabled>Choose</option>
+                                  <option value="Course 1">Course 1</option>
+                                  <option value="Course 2">Course 2</option>
+                                  <option value="Course 3">Course 3</option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="course" class="form-label">Level *</label>
+                              <select class="form-select" id="course" name="level" required>
+                                  <option selected disabled>Choose</option>
+                                  <option value="Basic">Basic (200, 000 Naira)</option>
+                                  <option value="Intensive">Intensive (300, 000 Naira)</option>
+                                  <option value="Advanced">Advanced (400, 000 Naira)</option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Mode of Study *</label><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="mode_of_study" id="fulltime" value="Weekday" required>
+                                <label class="form-check-label" for="Weekday">Weekday</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="mode_of_study" id="parttime" value="Weekend">
+                                <label class="form-check-label" for="weekend">Weekend</label>
+                            </div>
+                        </div>
+                        
+                          <div class="mb-3">
+                              <label class="form-label">Gender *</label><br>
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="gender" id="fulltime" required value="Male">
+                                  <label class="form-check-label" for="male">Male</label>
+                              </div>
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="gender" id="parttime" value="Female">
+                                  <label class="form-check-label" for="female">Female</label>
+                              </div>
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="gender" id="parttime" value="Prefer not to say">
+                                  <label class="form-check-label" for="prefer not to say">Prefer not to say</label>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Shirt Size *</label><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shirt_size" id="S" value="S" required>
+                                <label class="form-check-label" for="S">S</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shirt_size" id="M" value="M">
+                                <label class="form-check-label" for="M">M</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shirt_size" id="L" value="L">
+                                <label class="form-check-label" for="L">L</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shirt_size" id="XL" value="XL">
+                                <label class="form-check-label" for="XL">XL</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="shirt_size" id="XXL" value="XXL">
+                                <label class="form-check-label" for="XXL">XXL</label>
+                            </div>
+                        </div>
+                        
+                          <div class="mb-3">
+                              <label class="form-label">Declaration *</label>
+                              <p> I   hereby declare that the information provided in this registration form is accurate and complete to the best of my knowledge. I agree to abide by the rules and regulations of Wazobia Culinary School Ltd and understand that my registration  is subject to approval. </p>
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                                  <label class="form-check-label" for="agree">I agree</label>
+                              </div>
+                             
+                          </div>
+                          <button type="submit" class="btn btn-danger w-100">Submit</button>
+                      </form>
+                  </div>
+                    <div class="row">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+
+
+  <div class="container-fluid footer">
+    <div class="row">
+        <div class="col-md-3 footer_log ">
+
+            <img src="{% static './images/logo2.png' %}" alt="">
+            <span class="foot">Wazobia Culinary School</span>
+           <a href="https://wa.me/7025713326">whatsapp:+2347025713326</a>
+            <a href="tel:+234 803 790 7488">call:+234 80 379 07488</a>
+        </div>
+        <div class="col-md-3">
+
+          <h5>Campus</h5>
+          <p>114 Iju road, Fagba, Lagos.</p>
+
+        </div>
+        <div class="col-md-3">
+
+          <h5>Quick Links</h5>
+          <a href="{% url 'about' %}">About WCS</a>
+          <a href="{% url 'register' %}">Admission</a>
+          <a href="{% url 'home' %}">Courses</a>
+
+
+        </div>
+        <div class="col-md-2">
+            <h5>Socials & Enquiries</h5>
+
+            <a href="https://www.facebook.com/lasopdotnet" target="_blank"><i className="fa-brands fa-facebook-square"></i>Facebook</a>
+         
+           <a href="https://www.instagram.com/lasopdotnet" target="_blank"><i className="fa-brands fa-instagram-square"></i>Instagram</a>
+          
+           <a href="https://twitter.com/Lasopdotnet" target="_blank"><i className="fa-brands fa-twitter-square"></i>Twitter</a>
+        </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-7">
+        <p id="year" class="text-center mt-5 "></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  let year=new Date().getFullYear()
+  document.getElementById('year').innerHTML=`Copyright &copy;${year} Wazobia Culinary School`
+
+ </script>
+
+  
+
+
+{% comment %} <script src="{% static './js/main.js' %}"></script> {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!--Body of Form ends--->
+  </body>
+</html>
