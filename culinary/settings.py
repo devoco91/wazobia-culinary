@@ -34,10 +34,18 @@ SECRET_KEY = 'django-insecure-on3uso5!_yug6toip)n4die+l69j^q+$jjgcbx3ziyfmv1tkm@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ["wazobiaculinary.com ", "www.wazobiaculinary.com ", "wazobia-culinary-1.onrender.com"]
+
 
 import os
+
+ALLOWED_HOSTS = [
+    "www.wazobiaculinary.com",
+    "wazobiaculinary.com",
+    "wazobia-culinary-1.onrender.com",
+]
+
+print(f"🔍 DEBUG: ALLOWED_HOSTS = {ALLOWED_HOSTS}")  # Check Render logs for this output
+
 
 
 
