@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import  *
 from django.contrib import messages
 from .models import *
+from django.db.models import Sum
 
 # Create your views here.
 
@@ -35,15 +36,21 @@ def contactpage(request):
 def dashboardpage(request):
     registrations = Registration.objects.all()  # Fetch all registrations
     contacts = ContactMessage.objects.all()  # Fetch all contact messages
+    payments = Payment.objects.all()  # Fetch all Payment
 
     total_registrations = registrations.count()  # Get total registrations
     total_messages = contacts.count()  # Get total contact messages
+    total_payments = payments.count()  # Get total payments
+    total_amount_paid = Payment.objects.aggregate(Sum('amount_paid'))['amount_paid__sum'] or 0  # Default to 0 if no payments exist
 
     context = {
         "registrations": registrations,
         "contacts": contacts,
+        "payments":payments,
         "total_registrations": total_registrations,
         "total_messages": total_messages,
+        'total_payments': total_payments,
+        'total_amount_paid': total_amount_paid
     }
     return render(request, 'school/dashboard.html', context)
 
@@ -62,7 +69,6 @@ def registerpage(request):
         address = request.POST.get("address")
         phone = request.POST.get("phone")
         course = request.POST.get("course")
-        level = request.POST.get("level")
         mode_of_study = request.POST.get("mode_of_study")
         gender = request.POST.get("gender")
         shirt_size = request.POST.get("shirt_size")
@@ -71,7 +77,7 @@ def registerpage(request):
         # Save to database
         Registration.objects.create(
             name=name, email=email, address=address, phone=phone,
-            course=course,level=level, mode_of_study=mode_of_study,
+            course=course, mode_of_study=mode_of_study,
             gender=gender, shirt_size=shirt_size, agree=agree
         )
 
