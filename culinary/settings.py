@@ -41,8 +41,10 @@ import os
 ALLOWED_HOSTS = [
     "www.wazobiaculinary.com",
     "wazobiaculinary.com",
-    "wazobia-culinary-1.onrender.com",
+    "wazobia-culinary-1.onrender.com",  # already here ✅
+    "wazobia-culinary.onrender.com",     # ⬅️ you need to ADD this
 ]
+
 
 print(f"🔍 DEBUG: ALLOWED_HOSTS = {ALLOWED_HOSTS}")  # Check Render logs for this output
 
